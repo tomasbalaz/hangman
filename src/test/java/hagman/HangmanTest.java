@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class HangmanTest {
-	
+
 	private HangmanGame game;
 
 	@Before
@@ -35,15 +35,25 @@ public class HangmanTest {
 		char[] attemptedCharacters = { 't', 'r', 'o', 'l', 'l' };
 		String[] expectedGuessCharacters = { "t____", "tr___", "tro__", "troll" };
 
-	    for (int i = 0; i < attemptedCharacters.length -1; i++) {
-	    	char c = attemptedCharacters[i];
+		for (int i = 0; i < attemptedCharacters.length - 1; i++) {
+			char c = attemptedCharacters[i];
 			if (game.guess(c)) {
-				 Assert.assertEquals(expectedGuessCharacters[i], game.getGuessedCharacters().toString());
+				Assert.assertEquals(expectedGuessCharacters[i], game.getGuessedCharacters().toString());
 			} else {
 				Assert.fail("Letter " + c + " should be guessed correctly, but it is not.");
 			}
 		}
 		Assert.assertTrue(game.isWon());
+	}
+
+	@Test
+	public void testCompletelyFailedGuessing() {
+		for (int i = 0; i < 6; i++) {
+			if (game.guess('w')) {
+				Assert.fail("Letter 'w' is incorrectly guessed");
+			}
+		}
+		Assert.assertEquals(0, game.getAttemptsLeft());
 	}
 
 }
