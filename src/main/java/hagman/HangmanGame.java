@@ -21,9 +21,17 @@ public class HangmanGame {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void guess(char c) {
-		// TODO Auto-generated method stub
-
+	public void guess(char character) {
+		boolean letterIsFound = false;
+		for(int i = 0; i < challengeWord.length(); i++) {
+			if(challengeWord.charAt(i) == character) {
+				letterIsFound = true;
+				guessedCharacters.setCharAt(i, character);
+			}
+		}
+		if (!letterIsFound) {
+			attemptsLeft--;
+		}
 	}
 
 	public boolean isWon() {
