@@ -18,7 +18,9 @@ public class HangmanGame {
 	private Random random;
 
 	public HangmanGame(Random random, List<String> dictionary) {
-		// TODO Auto-generated constructor stub
+		 this.random = random;
+		 chooseRandomWord(dictionary);
+		 initializeUnguessedWord();
 	}
 
 	public void guess(char character) {
@@ -38,4 +40,17 @@ public class HangmanGame {
 		return guessedCharacters.toString().equals(challengeWord);
 	}
 
+	private void chooseRandomWord(List<String> dictionary) {
+	    int randomIndex = random.nextInt(dictionary.size());
+
+	    challengeWord = dictionary.get(randomIndex);
+	}
+	
+	private void initializeUnguessedWord() {
+		guessedCharacters = new StringBuilder();
+		for (int i = 0; i < challengeWord.length(); i++) {
+			guessedCharacters.append(UNGUESSED_CHAR);
+		}
+	}
+	
 }
