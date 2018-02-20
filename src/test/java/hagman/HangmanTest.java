@@ -33,12 +33,14 @@ public class HangmanTest {
 	@Test
 	public void testDetailedRun() {
 		char[] attemptedCharacters = { 't', 'r', 'o', 'l', 'l' };
+		String[] expectedGuessCharacters = { "t____", "tr___", "tro__", "troll" };
 
-		for (char c : attemptedCharacters) {
+	    for (int i = 0; i < attemptedCharacters.length -1; i++) {
+	    	char c = attemptedCharacters[i];
 			if (game.guess(c)) {
-				System.out.println(game.getGuessedCharacters());
+				 Assert.assertEquals(expectedGuessCharacters[i], game.getGuessedCharacters().toString());
 			} else {
-				System.out.println("FAIL!" + game.getAttemptsLeft());
+				Assert.fail("Letter " + c + " should be guessed correctly, but it is not.");
 			}
 		}
 		Assert.assertTrue(game.isWon());
