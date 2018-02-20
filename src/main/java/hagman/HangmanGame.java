@@ -23,7 +23,7 @@ public class HangmanGame {
 		 initializeUnguessedWord();
 	}
 
-	public void guess(char character) {
+	public boolean  guess(char character) {
 		boolean letterIsFound = false;
 		for(int i = 0; i < challengeWord.length(); i++) {
 			if(challengeWord.charAt(i) == character) {
@@ -34,10 +34,19 @@ public class HangmanGame {
 		if (!letterIsFound) {
 			attemptsLeft--;
 		}
+		return letterIsFound;
 	}
 
 	public boolean isWon() {
 		return guessedCharacters.toString().equals(challengeWord);
+	}
+	
+	public CharSequence getGuessedCharacters() {
+	    return guessedCharacters;
+	}
+	
+	public int getAttemptsLeft() {
+	    return attemptsLeft;
 	}
 
 	private void chooseRandomWord(List<String> dictionary) {
