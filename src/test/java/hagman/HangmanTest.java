@@ -5,16 +5,22 @@ import java.util.List;
 import java.util.Random;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class HangmanTest {
+	
+	private HangmanGame game;
+
+	@Before
+	public void setUp() {
+		List<String> dictionary = Arrays.asList("troll");
+		game = new HangmanGame(new Random(1), dictionary);
+	}
 
 	@Test
 	public void testIdealRun() {
 
-		List<String> dictionary = Arrays.asList("troll");
-
-		HangmanGame game = new HangmanGame(new Random(1), dictionary);
 		game.guess('t');
 		game.guess('r');
 		game.guess('o');
@@ -26,9 +32,6 @@ public class HangmanTest {
 
 	@Test
 	public void testDetailedRun() {
-		List<String> dictionary = Arrays.asList("troll");
-
-		HangmanGame game = new HangmanGame(new Random(1), dictionary);
 		char[] attemptedCharacters = { 't', 'r', 'o', 'l', 'l' };
 
 		for (char c : attemptedCharacters) {
@@ -38,7 +41,7 @@ public class HangmanTest {
 				System.out.println("FAIL!" + game.getAttemptsLeft());
 			}
 		}
-		 Assert.assertTrue(game.isWon());
+		Assert.assertTrue(game.isWon());
 	}
 
 }

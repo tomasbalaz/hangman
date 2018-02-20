@@ -23,7 +23,7 @@ public class HangmanGame {
 		 initializeUnguessedWord();
 	}
 
-	public boolean  guess(char character) {
+	public boolean guess(char character) {
 		boolean letterIsFound = false;
 		for(int i = 0; i < challengeWord.length(); i++) {
 			if(challengeWord.charAt(i) == character) {
