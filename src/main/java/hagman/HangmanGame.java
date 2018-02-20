@@ -27,8 +27,7 @@ public class HangmanGame {
 	}
 
 	public boolean isWon() {
-		// TODO Auto-generated method stub
-		return false;
+		return guessedCharacters.toString().equals(challengeWord);
 	}
 
 }
