@@ -51,6 +51,10 @@ public class HangmanGame {
 	public int getAttemptsLeft() {
 	    return attemptsLeft;
 	}
+	
+	public String getChallengeWord() {
+	    return challengeWord;
+	}
 
 	private void chooseRandomWord(List<String> dictionary) {
 	    int randomIndex = random.nextInt(dictionary.size());
