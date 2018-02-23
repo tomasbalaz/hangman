@@ -65,7 +65,7 @@ public class HangmanTest {
 		Assert.assertTrue(game.isWon());
 	}
 
-	@Test
+	@Test(expected=IllegalStateException.class)
 	public void testFailTenTimes() {
 		for (char c : "qwetzuipas".toCharArray()) {
 			game.guess(c);

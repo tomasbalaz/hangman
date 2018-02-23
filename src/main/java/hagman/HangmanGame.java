@@ -24,6 +24,9 @@ public class HangmanGame {
 	}
 
 	public boolean guess(char character) {
+	    if(attemptsLeft <= 0) {
+	        throw new IllegalStateException("No more guessing attempts left");
+	    }
 		boolean letterIsFound = false;
 		for(int i = 0; i < challengeWord.length(); i++) {
 			if(challengeWord.charAt(i) == character) {
