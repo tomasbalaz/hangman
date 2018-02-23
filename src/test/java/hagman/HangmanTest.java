@@ -55,13 +55,21 @@ public class HangmanTest {
 		}
 		Assert.assertEquals(0, game.getAttemptsLeft());
 	}
-	
+
 	@Test
-	public void testWithTwoFailures() {   
-		for(char c : "xytroll".toCharArray()) {
-			 game.guess(c);
+	public void testWithTwoFailures() {
+		for (char c : "xytroll".toCharArray()) {
+			game.guess(c);
 		}
 		Assert.assertEquals(4, game.getAttemptsLeft());
-	    Assert.assertTrue(game.isWon());
+		Assert.assertTrue(game.isWon());
+	}
+
+	@Test
+	public void testFailTenTimes() {
+		for (char c : "qwetzuipas".toCharArray()) {
+			game.guess(c);
+		}
+		Assert.assertEquals(0, game.getAttemptsLeft());
 	}
 }
